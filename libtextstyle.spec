@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# static library
+%bcond_without	system_libs	# system libcroco, glib2, libxml2
 #
 Summary:	GNU libtextstyle - Text styling library
 Summary(pl.UTF-8):	GNU libtextstyle - biblioteka do obsługi stylu tekstu
@@ -16,6 +17,13 @@ Patch1:		%{name}-info.patch
 URL:		https://www.gnu.org/software/gettext/libtextstyle/manual/
 BuildRequires:	make >= 3.79.1
 BuildRequires:	ncurses-devel
+%if %{with system_libs}
+BuildRequires:	glib2-devel >= 2.0
+BuildRequires:	libcroco-devel >= 0.6.1
+BuildRequires:	libxml2-devel >= 2.0
+BuildRequires:	sed >= 4.0
+%endif
+%{?with_system_libs:Requires:	libcroco >= 0.6.1}
 Conflicts:	gettext-libs < 0.20.2-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -42,6 +50,11 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libtextstyle
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ncurses-devel
+%if %{with system_libs}
+Requires:	glib2-devel >= 2.0
+Requires:	libcroco-devel >= 0.6.1
+Requires:	libxml2-devel >= 2.0
+%endif
 Conflicts:	gettext-devel < 0.20.2-2
 
 %description devel
@@ -67,6 +80,10 @@ Statyczna biblioteka libtextstyle.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+
+%if %{with system_libs}
+%{__sed} -i -e '/gl_LIBCROCO\|gl_LIBGLIB\|gl_LIBXML/s/(\[yes\])//' gnulib-m4/gnulib-comp.m4
+%endif
 
 %build
 %configure \
