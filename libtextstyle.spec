@@ -16,6 +16,7 @@ Patch1:		%{name}-info.patch
 URL:		https://www.gnu.org/software/gettext/libtextstyle/manual/
 BuildRequires:	make >= 3.79.1
 BuildRequires:	ncurses-devel
+Conflicts:	gettext-libs < 0.20.2-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -41,6 +42,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libtextstyle
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ncurses-devel
+Conflicts:	gettext-devel < 0.20.2-2
 
 %description devel
 Header files for libtextstyle library.
@@ -53,6 +55,7 @@ Summary:	Static libtextstyle library
 Summary(pl.UTF-8):	Statyczna biblioteka libtextstyle
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+Conflicts:	gettext-static < 0.20.2-2
 
 %description static
 Static libtextstyle library.
