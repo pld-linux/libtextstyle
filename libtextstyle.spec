@@ -11,6 +11,7 @@ License:	GPL v3+
 Group:		Libraries
 Source0:	http://alpha.gnu.org/gnu/gettext/%{name}-%{version}.tar.gz
 # Source0-md5:	30be56f2428ff2add624caf3a1700d3e
+Patch0:		%{name}-libdir.patch
 URL:		https://www.gnu.org/software/gettext/libtextstyle/manual/
 BuildRequires:	make >= 3.79.1
 BuildRequires:	ncurses-devel
@@ -60,6 +61,7 @@ Statyczna biblioteka libtextstyle.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
@@ -67,9 +69,7 @@ Statyczna biblioteka libtextstyle.
 	--disable-silent-rules \
 	%{!?with_static_libs:--disable-static}
 
-# pass LTLIBTERMINFO to drop unwanted -L...
-%{__make} \
-	LTLIBTERMINFO="-lncurses"
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
