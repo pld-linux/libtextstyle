@@ -12,6 +12,7 @@ Group:		Libraries
 Source0:	http://alpha.gnu.org/gnu/gettext/%{name}-%{version}.tar.gz
 # Source0-md5:	30be56f2428ff2add624caf3a1700d3e
 Patch0:		%{name}-libdir.patch
+Patch1:		%{name}-info.patch
 URL:		https://www.gnu.org/software/gettext/libtextstyle/manual/
 BuildRequires:	make >= 3.79.1
 BuildRequires:	ncurses-devel
@@ -62,6 +63,7 @@ Statyczna biblioteka libtextstyle.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure \

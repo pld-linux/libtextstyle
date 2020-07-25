@@ -1,0 +1,14 @@
+--- libtextstyle-0.20.5/doc/libtextstyle.texi.orig	2019-05-05 18:38:05.000000000 +0200
++++ libtextstyle-0.20.5/doc/libtextstyle.texi	2019-06-19 07:51:38.487255700 +0200
+@@ -26,9 +26,9 @@
+ @include version.texi
+ 
+ @ifinfo
+-@dircategory Software development
++@dircategory Programming tools:
+ @direntry
+-* GNU libtextstyle: (libtextstyle).     Output of styled text.
++* GNU libtextstyle: (libtextstyle).	Output of styled text
+ @end direntry
+ @end ifinfo
+ 
