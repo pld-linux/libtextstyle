@@ -78,8 +78,8 @@ Statyczna biblioteka libtextstyle.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
 %if %{with system_libs}
 %{__sed} -i -e '/gl_LIBCROCO\|gl_LIBGLIB\|gl_LIBXML/s/(\[yes\])//' gnulib-m4/gnulib-comp.m4
